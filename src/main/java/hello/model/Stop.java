@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Stop {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator= "ID_GENERATOR_POOLED")
+    @GeneratedValue(generator= "ID_GENERATOR_POOLED")
     Long id;
     public String gtfsId;
     public String code;

@@ -10,7 +10,7 @@ import java.util.Date;
 public class StopTime {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator= "ID_GENERATOR_POOLED")
+    @GeneratedValue(generator= "ID_GENERATOR_POOLED")
     Long id;
     public String tripId;
     public Date arrivalTime;

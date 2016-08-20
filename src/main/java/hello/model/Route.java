@@ -9,8 +9,8 @@ import javax.persistence.Id;
 public class Route {
 
     @Id
-    @GeneratedValue(generator = "ID_GENERATOR_POOLED")
-    public Long id;
+//    @GeneratedValue(generator = "ID_GENERATOR_POOLED")
+//    public Long id;
     public String gtfsId;
     public String shortName;
     public String longName;

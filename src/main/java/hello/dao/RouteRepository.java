@@ -1,7 +1,10 @@
 package hello.dao;
 
 import hello.model.Route;
-import org.springframework.data.repository.CrudRepository;
 
-public interface RouteRepository extends CrudRepository<Route, Long> {
+import java.util.List;
+
+public interface RouteRepository {
+    void save(List<Route> routes);
+    Route getReference(String id);
 }

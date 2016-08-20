@@ -1,7 +1,10 @@
 package hello.dao;
 
 import hello.model.Trip;
-import org.springframework.data.repository.CrudRepository;
 
-public interface TripRepository extends CrudRepository<Trip, Long> {
+import java.util.List;
+
+public interface TripRepository {
+    void save(List<Trip> routes);
+    Trip getReference(String id);
 }

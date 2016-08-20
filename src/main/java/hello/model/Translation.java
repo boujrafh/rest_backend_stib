@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Translation {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator= "ID_GENERATOR_POOLED")
+    @GeneratedValue(generator= "ID_GENERATOR_POOLED")
     Long id;
     public String transId;
     public String translation;

@@ -9,9 +9,10 @@ import java.util.Date;
 @Entity
 public class Calendar {
 
+//    @Id
+//    @GeneratedValue(generator = "ID_GENERATOR_POOLED")
+//    public Long id;
     @Id
-    @GeneratedValue(generator = "ID_GENERATOR_POOLED")
-    public Long id;
     public String serviceId;
     public boolean monday;
     public boolean tuesday;

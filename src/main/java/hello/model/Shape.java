@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Shape {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator= "ID_GENERATOR_POOLED")
+    @GeneratedValue(generator= "ID_GENERATOR_POOLED")
     public Long id;
     public String shapeId;
     public String ptLat;

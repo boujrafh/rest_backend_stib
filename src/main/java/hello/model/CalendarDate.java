@@ -1,8 +1,6 @@
 package hello.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -11,13 +9,13 @@ public class CalendarDate {
     @Id
     @GeneratedValue(generator = "ID_GENERATOR_POOLED")
     Long id;
-
-    public String serviceId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    public Calendar calendar;
     public Date date;
     public ExceptionType exceptionType;
 
-    public CalendarDate(String serviceId, Date date, ExceptionType exceptionType) {
-        this.serviceId = serviceId;
+    public CalendarDate(Calendar calendar, Date date, ExceptionType exceptionType) {
+        this.calendar = calendar;
         this.date = date;
         this.exceptionType = exceptionType;
     }
