@@ -1,10 +1,7 @@
 package hello.metadata;
 
 import hello.io.InputStreamFactory;
-import hello.model.Agency;
-import hello.model.Calendar;
-import hello.model.Route;
-import hello.model.Shape;
+import hello.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,19 +20,25 @@ public class StibMetadataLoaderImpl implements StibMetadataLoader {
     private final DbLoader<Agency> agenciesLoader;
     private final DbLoader<Calendar> calendarsLoader;
     private final DbLoader<Shape> shapesLoader;
+    private final DbLoader<Stop> stopLoader;
+    private final DbLoader<StopTime> stopTimeLoader;
+    private final DbLoader<Translation> translationLoader;
+    private final DbLoader<Trip> tripLoader;
 
     @Autowired
     public StibMetadataLoaderImpl(
-            InputStreamFactory isf,
-            DbLoader<Route> routesLoader,
-            DbLoader<Agency> agenciesLoader,
-            DbLoader<Calendar> calendarsLoader,
-            DbLoader<Shape> shapesLoader) {
+            InputStreamFactory isf, DbLoader<Route> routesLoader, DbLoader<Agency> agenciesLoader,
+            DbLoader<Calendar> calendarsLoader, DbLoader<Shape> shapesLoader, DbLoader<Stop> stopLoader,
+            DbLoader<StopTime> stopTimeLoader, DbLoader<Translation> translationLoader, DbLoader<Trip> tripLoader) {
         this.isf = isf;
         this.routesLoader = routesLoader;
         this.agenciesLoader = agenciesLoader;
         this.calendarsLoader = calendarsLoader;
         this.shapesLoader = shapesLoader;
+        this.stopLoader = stopLoader;
+        this.stopTimeLoader = stopTimeLoader;
+        this.translationLoader = translationLoader;
+        this.tripLoader = tripLoader;
     }
 
     @Override
@@ -70,6 +73,18 @@ public class StibMetadataLoaderImpl implements StibMetadataLoader {
         }
         else if (fileName.equals("shapes.txt")) {
             shapesLoader.loadToDb(br);
+        }
+        else if (fileName.equals("stops.txt")) {
+            stopLoader.loadToDb(br);
+        }
+        else if (fileName.equals("stop_times.txt")) {
+            stopTimeLoader.loadToDb(br);
+        }
+        else if (fileName.equals("translations.txt")) {
+            translationLoader.loadToDb(br);
+        }
+        else if (fileName.equals("trips.txt")) {
+            tripLoader.loadToDb(br);
         }
     }
 }

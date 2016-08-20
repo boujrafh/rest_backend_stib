@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class Calendar {
@@ -19,8 +20,8 @@ public class Calendar {
     public boolean friday;
     public boolean saturday;
     public boolean sunday;
-    public String startDate;
-    public String endDate;
+    public Date startDate;
+    public Date endDate;
 
     Calendar() {}
 
@@ -33,8 +34,8 @@ public class Calendar {
             boolean friday,
             boolean saturday,
             boolean sunday,
-            String startDate,
-            String endDate) {
+            Date startDate,
+            Date endDate) {
         this.serviceId = serviceId;
         this.monday = monday;
         this.tuesday = tuesday;

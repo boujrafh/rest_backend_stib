@@ -3,8 +3,15 @@ package hello.metadata;
 import hello.model.Calendar;
 import org.springframework.stereotype.Component;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Component
 public class CalendarParser implements Parser<Calendar> {
+
+    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+
     @Override
     public Calendar parse(String line) {
         String[] splitLine = line.trim().split(",");
@@ -17,8 +24,8 @@ public class CalendarParser implements Parser<Calendar> {
                 parseIntToBool(splitLine[5]),
                 parseIntToBool(splitLine[6]),
                 parseIntToBool(splitLine[7]),
-                splitLine[8],
-                splitLine[9]);
+                parseToDate(splitLine[8]),
+                parseToDate(splitLine[9]));
     }
 
     boolean parseIntToBool(String integer) {
@@ -29,5 +36,13 @@ public class CalendarParser implements Parser<Calendar> {
             return true;
         }
         throw new RuntimeException("cannot convert \"" + integer + "\" to boolean");
+    }
+
+    private Date parseToDate(String date) {
+        try {
+            return sdf.parse(date);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
