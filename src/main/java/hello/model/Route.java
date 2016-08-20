@@ -1,5 +1,6 @@
 package hello.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,6 +14,7 @@ public class Route {
     public String gtfsId;
     public String shortName;
     public String longName;
+    @Column(name = "MY_DESC")
     public String desc;
     public String type;
     public String url;
