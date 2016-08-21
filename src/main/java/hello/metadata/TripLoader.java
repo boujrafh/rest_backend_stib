@@ -43,6 +43,8 @@ public class TripLoader implements DbLoader<Trip> {
                 }
             }
             timedSave(temp);
+            long stop = System.currentTimeMillis();
+            System.out.println("time to process: " + (((double)stop - start) / 1000));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.Collection;
 import java.util.List;
 
 @Component
@@ -18,8 +19,12 @@ public class TripRepositoryImpl implements TripRepository {
     @Transactional
     @Override
     public void save(List<Trip> trips) {
-        for(Trip trip: trips) {
-            em.persist(trip);
+        for(int i = 0; i < trips.size(); i = i + 20) {
+            for(int j = 0; j < 20 && (i+j) < trips.size(); j++) {
+                em.persist(trips.get(i + j));
+                em.flush();
+                em.clear();
+            }
         }
     }
 

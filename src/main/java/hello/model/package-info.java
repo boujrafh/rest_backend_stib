@@ -8,7 +8,7 @@
                                 value = "SB_SEQUENCE"
                         ), @Parameter(
                         name = "increment_size",
-                        value = "1000"
+                        value = Constants.BATCH_SIZE_STRING
                 ),
                         @Parameter(
                                 name = "optimizer",
@@ -26,13 +26,14 @@
                         ),
                         @Parameter(
                                 name = "initial_value",
-                                value = "1000"
+                                value = Constants.INITIAL_ID
                         )
                 }
         )
 })
 package hello.model;
 
+import hello.metadata.Constants;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.GenericGenerators;
 import org.hibernate.annotations.Parameter;
