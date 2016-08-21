@@ -1,7 +1,10 @@
 package hello.dao;
 
 import hello.model.Translation;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Component;
 
-public interface TranslationRepository extends CrudRepository<Translation, Long> {
-}
+import javax.ejb.Stateless;
+
+@Component
+@Stateless
+public class TranslationRepository extends RepositoryImpl<Translation> {}

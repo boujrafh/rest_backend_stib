@@ -1,8 +1,7 @@
 package hello.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
@@ -14,14 +13,23 @@ public class Calendar {
 //    public Long id;
     @Id
     public String serviceId;
+    @Column
     public boolean monday;
+    @Column
     public boolean tuesday;
+    @Column
     public boolean wednesday;
+    @Column
     public boolean thursday;
+    @Column
     public boolean friday;
+    @Column
     public boolean saturday;
+    @Column
     public boolean sunday;
+    @Column
     public Date startDate;
+    @Column
     public Date endDate;
 
     Calendar() {}

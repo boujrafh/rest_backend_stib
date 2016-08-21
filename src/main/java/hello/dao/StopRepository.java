@@ -1,7 +1,10 @@
 package hello.dao;
 
 import hello.model.Stop;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Component;
 
-public interface StopRepository extends CrudRepository<Stop, Long> {
-}
+import javax.ejb.Stateless;
+
+@Component
+@Stateless
+public class StopRepository extends RepositoryImpl<Stop> {}

@@ -1,12 +1,12 @@
 package hello.metadata;
 
 import hello.dao.Repository;
-import hello.model.Stop;
+import hello.model.Route;
 import org.springframework.stereotype.Component;
 
 @Component
-public class StopLoader extends DbLoaderImpl<Stop> {
-    public StopLoader(Repository<Stop> repo, Parser<Stop> parser) {
+public class RouteLoader extends DbLoaderImpl<Route> {
+    public RouteLoader(Repository<Route> repo, Parser<Route> parser) {
         super(repo, parser);
     }
 }

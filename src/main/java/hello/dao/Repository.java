@@ -1,9 +1,10 @@
 package hello.dao;
 
+import javax.ejb.Stateless;
 import java.util.List;
-
-public interface Repositories <T> {
+@Stateless
+public interface Repository<T> {
     void save(List<T> tList);
-    T getReference(String id);
+    T getReference(Class<T> clazz,String id);
 }
 

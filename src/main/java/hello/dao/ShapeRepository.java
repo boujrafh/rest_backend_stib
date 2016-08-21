@@ -1,7 +1,10 @@
 package hello.dao;
 
 import hello.model.Shape;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Component;
 
-public interface ShapeRepository extends CrudRepository<Shape, Long> {
-}
+import javax.ejb.Stateless;
+
+@Component
+@Stateless
+public class ShapeRepository extends RepositoryImpl<Shape> {}

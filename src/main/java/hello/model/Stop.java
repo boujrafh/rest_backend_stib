@@ -8,7 +8,7 @@ public class Stop {
     @Id
     @GeneratedValue(generator= "ID_GENERATOR_POOLED")
     Long id;
-    public String gtfsId;
+    public String stopId;
     public String code;
     public String name;
     @Column(name = "MY_DESC")
@@ -19,9 +19,9 @@ public class Stop {
     public String url;
     public LocationType locationType;
 
-    public Stop(String gtfsId, String code, String name, String desc, double latitude,
+    public Stop(String stopId, String code, String name, String desc, double latitude,
                 double longitude, String zoneId, String url, LocationType locationType) {
-        this.gtfsId = gtfsId;
+        this.stopId = stopId;
         this.code = code;
         this.name = name;
         this.desc = desc;

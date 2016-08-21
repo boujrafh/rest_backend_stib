@@ -49,7 +49,7 @@ public class StibMetadataLoaderImpl implements StibMetadataLoader {
             ZipInputStream zis = new ZipInputStream(isf.getInputStreamFromFile(zipFilePath));
             ZipEntry entry = zis.getNextEntry();
             while (entry != null) {
-                if(!entry.isDirectory()) {
+                if (!entry.isDirectory()) {
                     loadFile(entry.getName(), zis);
                 }
                 zis.closeEntry();
@@ -64,33 +64,32 @@ public class StibMetadataLoaderImpl implements StibMetadataLoader {
     private void loadFile(String fileName, ZipInputStream zis) {
         BufferedReader br = new BufferedReader(new InputStreamReader(zis, StandardCharsets.UTF_8));
         System.out.println("name of file: " + fileName);
-/*        if(fileName.equals("agency.txt")) {
+        if (fileName.equals("agency.txt")) {
             agenciesLoader.loadToDb(br);
         }
-        else */if (fileName.equals("routes.txt")) {
+
+        else if (fileName.equals("routes.txt")) {
             routesLoader.loadToDb(br);
-        }
-        else if (fileName.equals("calendar.txt")) {
+        } else if (fileName.equals("calendar.txt")) {
             calendarsLoader.loadToDb(br);
-        }
-        else if (fileName.equals("calendar_dates.txt")) {
+        } else if (fileName.equals("calendar_dates.txt")) {
             calendarDateLoader.loadToDb(br);
+        } else if (fileName.equals("shapes.txt")) {
+            shapesLoader.loadToDb(br);
+        } else if (fileName.equals("stops.txt")) {
+            stopLoader.loadToDb(br);
+        } else if (fileName.equals("stop_times.txt")) {
+            stopTimeLoader.loadToDb(br);
+        } else if (fileName.equals("translations.txt")) {
+            translationLoader.loadToDb(br);
+
         }
-//        else if (fileName.equals("shapes.txt")) {
-//            shapesLoader.loadToDb(br);
-//        }
-//        else if (fileName.equals("stops.txt")) {
-//            stopLoader.loadToDb(br);
-//        }
-//        else if (fileName.equals("stop_times.txt")) {
-//            stopTimeLoader.loadToDb(br);
-//        }
-//        else if (fileName.equals("translations.txt")) {
-//            translationLoader.loadToDb(br);
-//        }
         else if (fileName.equals("trips.txt")) {
             tripLoader.loadToDb(br);
         }
         System.out.println("end load file");
     }
 }
+
+
+

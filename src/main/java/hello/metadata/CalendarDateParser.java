@@ -1,6 +1,7 @@
 package hello.metadata;
 
-import hello.dao.CalendarRepository;
+import hello.dao.Repository;
+import hello.model.Calendar;
 import hello.model.CalendarDate;
 import hello.model.ExceptionType;
 import org.springframework.stereotype.Component;
@@ -12,10 +13,10 @@ import java.util.Date;
 @Component
 public class CalendarDateParser implements Parser<CalendarDate> {
 
-    private final CalendarRepository repo;
+    private final Repository<Calendar> repo;
     private final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 
-    public CalendarDateParser(CalendarRepository repo) {
+    public CalendarDateParser(Repository<Calendar> repo) {
         this.repo = repo;
     }
 
@@ -23,7 +24,7 @@ public class CalendarDateParser implements Parser<CalendarDate> {
     public CalendarDate parse(String line) {
         String[] splitLine = line.trim().split(",");
         return new CalendarDate(
-                repo.getReference(splitLine[0]),
+                repo.getReference(Calendar.class, splitLine[0]),
                 parseToDate(splitLine[1]),
                 parseToExceptionType(splitLine[2]));
     }

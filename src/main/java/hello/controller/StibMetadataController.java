@@ -25,7 +25,7 @@ public class StibMetadataController {
     public void downloadMetadata() {
 
         try {
-            downloader.downloadMetadata("stib_metadata.zip");
+            downloader.downloadMetadata("gtfs_stib.zip");
         } catch (RestClientException e) {
             throw new DownloadFailedException();
         }
@@ -33,6 +33,6 @@ public class StibMetadataController {
 
     @RequestMapping(value = "/loadmetadata", method = RequestMethod.PUT)
     public void loadMetadata() {
-        loader.loadMetadataToDb("stib_metadata.zip");
+        loader.loadMetadataToDb("gtfs_stib.zip");
     }
 }
